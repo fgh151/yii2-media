@@ -1,0 +1,32 @@
+.media-folder-icon {
+    background: url("../img/folder.svg") no-repeat left center;
+    background-size: contain;
+    padding-left: 2rem !important;
+}
+
+.media-file-icon {
+    background: url("../img/file.svg") no-repeat left center;
+    background-size: contain;
+    padding-left: 2rem !important;
+}
+
+.breadcrumb-item.media-folder-icon {
+    margin-left: 1rem;
+}
+
+.media-manager .breadcrumb-item+.breadcrumb-item::before {
+    display: none;
+}
+
+.media-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.media-table .d-table-cell {
+    vertical-align: middle;
+}
+
+.media-preview-image {
+    max-width: 40px !important;
+}

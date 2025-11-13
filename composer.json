@@ -1,0 +1,36 @@
+{
+  "name": "fgh151/yii2-media",
+  "description": "yii2 media manager",
+  "type": "yii2-extension",
+  "keywords": [
+    "yii2",
+    "extension"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Fedor B Gorsky",
+      "email": "fedor@support-pc.org"
+    }
+  ],
+  "require": {
+    "yiisoft/yii2": "^2.0.0",
+    "fgh151/yii2-upload-behavior": "^0.0.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "fgh151\\media\\": ""
+    }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ],
+  "config": {
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true
+    }
+  }
+}
