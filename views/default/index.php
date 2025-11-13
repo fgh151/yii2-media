@@ -6,8 +6,9 @@
  * @var $currentFolder \fgh151\media\models\MediaFolder|null
  */
 
-use yii\bootstrap5\Breadcrumbs;
+use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\widgets\Breadcrumbs;
 
 
 $path[] = ['label' => '/', 'url' => ['index']];
@@ -23,8 +24,8 @@ if ($currentFolder) {
 ?>
 
 <div class="media-manager">
-    <?= \kartik\helpers\Html::a('Создать папку', ['create-folder', 'folder' => $currentFolder?->id], ['class' => 'btn btn-success']) ?>
-    <?= \kartik\helpers\Html::a('Загрузить файл', ['create-file', 'folder' => $currentFolder?->id], ['class' => 'btn btn-success']) ?>
+    <?= Html::a('Создать папку', ['create-folder', 'folder' => $currentFolder?->id], ['class' => 'btn btn-success']) ?>
+    <?= Html::a('Загрузить файл', ['create-file', 'folder' => $currentFolder?->id], ['class' => 'btn btn-success']) ?>
 
     <?= Breadcrumbs::widget([
             'itemTemplate' => "<li class=\"breadcrumb-item media-folder-icon\">{link}</li>\n",
