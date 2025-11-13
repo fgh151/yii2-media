@@ -43,7 +43,7 @@ class MediaFolder extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'parent_id' => 'Parent ID',
-            'title' => 'Title',
+            'title' => 'Название',
         ];
     }
 

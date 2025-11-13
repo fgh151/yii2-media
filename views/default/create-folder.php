@@ -7,11 +7,12 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
+$this->title = 'Задать папку';
 ?>
 
 <div class="media-folder-create">
     <?php $form = ActiveForm::begin([]) ?>
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
-    <?= Html::submitButton('save', ['class' => 'btn btn-success']) ?>
+    <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     <?php ActiveForm::end() ?>
 </div>

@@ -3,14 +3,19 @@
  * @var $this \yii\web\View
  * @var $model \fgh151\media\models\MediaFile
  */
+
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+
+$this->title = 'Залить файл';
 ?>
 
 <div class="">
-    <?php $form = \yii\widgets\ActiveForm::begin([])?>
+    <?php $form = ActiveForm::begin()?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'upload')->fileInput() ?>
 
-    <?= \yii\helpers\Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
-    <?php \yii\widgets\ActiveForm::end() ?>
+    <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
+    <?php ActiveForm::end() ?>
 </div>

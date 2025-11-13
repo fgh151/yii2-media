@@ -64,7 +64,7 @@ class MediaFile extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'media_folder_id' => 'Media Folder ID',
-            'title' => 'Title',
+            'title' => 'Название',
         ];
     }
 
