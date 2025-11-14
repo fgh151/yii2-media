@@ -42,7 +42,6 @@ if ($currentFolder) {
                 <div class="d-table-cell"></div>
                 <div class="d-table-cell"></div>
                 <div class="d-table-cell"></div>
-                <div class="d-table-cell"></div>
             </a>
         <?php endforeach; ?>
 
@@ -65,8 +64,6 @@ if ($currentFolder) {
 
                 <div class="d-table-cell">
                     <a href="<?= $file->getSrc() ?>" target="_blank" class="media-action media-action-copy js-copy" title="скопировать путь файла в буфер обмена"></a>
-                </div>
-                <div class="d-table-cell">
                     <a href="<?=Url::to(['delete', 'id' => $file->id])?>" class="media-action media-action-delete"></a>
                 </div>
             </div>
