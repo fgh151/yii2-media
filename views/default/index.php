@@ -1,14 +1,14 @@
 <?php
 /**
  * @var $this \yii\web\View
- * @var $folders \fgh151\media\models\MediaFolder[]
- * @var $files \fgh151\media\models\MediaFile[]
- * @var $currentFolder \fgh151\media\models\MediaFolder|null
+ * @var $folders \app\modules\adm\modules\media\models\MediaFolder[]
+ * @var $files \app\modules\adm\modules\media\models\MediaFile[]
+ * @var $currentFolder \app\modules\adm\modules\media\models\MediaFolder|null
  */
 
 use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\widgets\Breadcrumbs;
+use yii\bootstrap5\Breadcrumbs;
 
 
 $path[] = ['label' => '/', 'url' => ['index']];
@@ -40,14 +40,19 @@ if ($currentFolder) {
                     <?= $folder->title ?>
                 </div>
                 <div class="d-table-cell"></div>
+                <div class="d-table-cell"></div>
+                <div class="d-table-cell"></div>
             </a>
         <?php endforeach; ?>
 
         <?php foreach ($files as $file): ?>
-            <a href="<?= $file->getSrc() ?>" target="_blank" class="d-table-row ">
+            <div class="d-table-row ">
                 <div class="d-table-cell media-icon media-icon media-file-icon"></div>
                 <div class="d-table-cell media-item-title">
                     <?= $file->title ?>
+                </div>
+                <div class="d-table-cell">
+                    <?= strtolower($file->getFileExtension())?>
                 </div>
                 <div class="d-table-cell media-item-preview">
                     <?php if (in_array(strtolower($file->getFileExtension()), ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'])): ?>
@@ -56,7 +61,23 @@ if ($currentFolder) {
 
                     <?php endif;?>
                 </div>
-            </a>
+
+                <div class="d-table-cell">
+                    <a href="<?= $file->getSrc() ?>" target="_blank" class="media-action-copy js-copy" title="скопировать путь файла в буфер обмена"></a>
+                </div>
+            </div>
         <?php endforeach; ?>
     </div>
 </div>
+
+
+<?php
+$this->registerJs(<<<JS
+    $('.js-copy').on('click', async function (e) {
+        e.preventDefault();
+        const href= $(this).attr('href');
+        await navigator.clipboard.writeText(href);
+        return false;
+    })
+JS
+);
