@@ -32,7 +32,7 @@ if ($currentFolder) {
             'homeLink' => false,
             'links' => $path,
     ]) ?>
-    <div class="d-table media-table">
+    <div class="d-table table media-table">
         <?php foreach ($folders as $folder): ?>
             <a href="<?= Url::to(['index', 'folder' => $folder->id]) ?>" class="d-table-row ">
                 <div class="d-table-cell media-icon media-icon media-folder-icon"></div>
