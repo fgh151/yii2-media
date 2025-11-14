@@ -6,7 +6,9 @@ use fgh151\media\assets\MediaAsset;
 use fgh151\media\models\MediaFile;
 use fgh151\media\models\MediaFolder;
 use Yii;
+use yii\db\StaleObjectException;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 
 class DefaultController extends Controller
 {
@@ -51,5 +53,25 @@ class DefaultController extends Controller
         return $this->render('create-file', [
             'model' => $model,
         ]);
+    }
+
+    /**
+     * @throws \Throwable
+     * @throws StaleObjectException
+     * @throws NotFoundHttpException
+     */
+    public function actionDelete($id)
+    {
+        $file = MediaFile::findOne($id);
+        if ($file == null) {
+            throw new NotFoundHttpException();
+        }
+
+        $title = $file->title;
+        $folder = $file->media_folder_id;
+
+        $file->delete();
+        Yii::$app->getSession()->setFlash('success', "Файл $title был удален");
+        return $this->redirect(['index', 'folder' => $folder]);
     }
 }

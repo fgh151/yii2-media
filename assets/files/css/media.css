@@ -30,3 +30,21 @@
 .media-preview-image {
     max-width: 40px !important;
 }
+
+.media-action {
+    width: 1rem;
+    height: 1rem;
+    display: inline-block;
+    padding: 1rem;
+    margin: 0 1rem;
+}
+
+.media-action-copy {
+    background: url("../img/copy.svg") no-repeat left center;
+    background-size: contain;
+}
+
+.media-action-delete {
+    background: url("../img/trash.svg") no-repeat left center;
+    background-size: contain;
+}
