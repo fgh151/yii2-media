@@ -10,6 +10,12 @@
     padding-left: 2rem !important;
 }
 
+.media-action-update {
+    background: url("../img/pencil.svg") no-repeat left center;
+    background-size: contain;
+    padding-left: 2rem !important;
+}
+
 .breadcrumb-item.media-folder-icon {
     margin-left: 1rem;
 }

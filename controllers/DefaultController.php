@@ -55,6 +55,22 @@ class DefaultController extends Controller
         ]);
     }
 
+    public function actionUpdateFile($id)
+    {
+        $model = MediaFile::findOne($id);
+        if ($model === null) {
+            throw new NotFoundHttpException();
+        }
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['index', 'folder' => $model->media_folder_id]);
+        }
+
+        return $this->render('update-file', [
+            'model' => $model,
+        ]);
+    }
+
     /**
      * @throws \Throwable
      * @throws StaleObjectException
