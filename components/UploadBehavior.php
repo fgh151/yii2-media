@@ -10,6 +10,9 @@ use yii\db\ActiveRecord;
 use yii\helpers\FileHelper;
 use yii\web\UploadedFile;
 
+/**
+ * @property ActiveRecord $owner
+ */
 class UploadBehavior extends FileUploadBehavior
 {
     private bool $execute = true;
@@ -58,7 +61,6 @@ class UploadBehavior extends FileUploadBehavior
             $model->{$this->storageAttribute} = $this->owner->id;
             $model->save();
         }
-
     }
 
     /**
@@ -66,15 +68,19 @@ class UploadBehavior extends FileUploadBehavior
      */
     private function uploadFile(UploadedFile $file): string
     {
+        $fileName = $this->owner->{$this->attribute};
+
+        if (empty($fileName)) {
+            $fileName = $file->baseName;
+            if ($file->extension) {
+                $fileName .= '.' . $file->extension;
+            }
+        }
+
         $path = $this->folder . DIRECTORY_SEPARATOR . substr(md5($file->name), 0, 2) . DIRECTORY_SEPARATOR . $this->owner->getPrimaryKey();
 
         $path = Yii::getAlias($path);
         FileHelper::createDirectory($path);
-
-        $fileName = $file->baseName;
-        if ($file->extension) {
-            $fileName .= '.' . $file->extension;
-        }
 
         $file->saveAs($path . DIRECTORY_SEPARATOR . $fileName);
 
